@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import AuthService from "../services/auth.service";
 
 const ProfileComponent = (props) => {
   let { currentUser, setCurrentUser } = props;
+
   return (
     <div style={{ padding: "3rem" }}>
       {!currentUser && (
@@ -16,12 +16,12 @@ const ProfileComponent = (props) => {
               <strong>{currentUser.user.username}</strong>
             </h3>
           </header>
-          <p>
+          {/* <p>
             <strong>Token:{currentUser.token}</strong>
           </p>
           <p>
             <strong>ID:{currentUser.user._id}</strong>
-          </p>
+          </p> */}
           <p>
             <strong>email:{currentUser.user.email}</strong>
           </p>

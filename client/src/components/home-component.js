@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-const HomeComponent = () => {
+import AuthService from "../services/auth.service";
+const HomeComponent = (props) => {
+  let { currentUser, setCurrentUser } = props;
+  console.log(currentUser);
   return (
     <main>
       <div className="container py-4">
@@ -22,24 +25,22 @@ const HomeComponent = () => {
             <div className="h-100 p-5 text-white bg-dark rounded-3">
               <h2>學生登入</h2>
               <p>學生可以註冊他們感興趣的課程</p>
-              <Link to="/register">
-                <button className="btn btn-outline-light">註冊</button>
-              </Link>
-              <Link to="/login">
-                <button className="btn btn-outline-light">登入</button>
-              </Link>
+              {!currentUser && (
+                <Link to="/login">
+                  <button className="btn btn-outline-light">登入</button>
+                </Link>
+              )}
             </div>
           </div>
           <div className="col-md-6">
             <div className="h-100 p-5 bg-light border rounded-3">
               <h2>講師登入</h2>
               <p>可以通過註冊成為一名講師，並開始製作線上課程</p>
-              <Link to="/register">
-                <button className="btn btn-outline-secondary">註冊</button>
-              </Link>
-              <Link to="/login">
-                <button className="btn btn-outline-secondary">登入</button>
-              </Link>
+              {!currentUser && (
+                <Link to="/login">
+                  <button className="btn btn-outline-secondary">登入</button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

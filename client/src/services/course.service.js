@@ -1,6 +1,6 @@
 import axios from "axios";
 const API_URL = "https://class-system-db.onrender.com/api/courses";
-
+// const API_URL = "http://localhost:8080/api/courses";
 class CourseService {
   post(title, description, price) {
     let token;
@@ -29,6 +29,7 @@ class CourseService {
     } else {
       token = "";
     }
+
     return axios.get(API_URL + "/student/" + _id, {
       headers: {
         Authorization: token,
@@ -42,6 +43,7 @@ class CourseService {
     } else {
       token = "";
     }
+
     return axios.get(API_URL + "/findByName/" + name, {
       headers: {
         Authorization: token,

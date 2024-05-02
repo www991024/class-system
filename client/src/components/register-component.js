@@ -25,9 +25,7 @@ const RegisterComponent = () => {
   const handleRegister = () => {
     AuthService.register(username, email, password, role)
       .then(() => {
-        window.alert(
-          "Registration succeeds. You are now redirected to the login page."
-        );
+        window.alert("註冊成功，您將轉至登入頁面");
         history.push("/login");
       })
       .catch((error) => {
@@ -42,7 +40,7 @@ const RegisterComponent = () => {
       <div>
         {message && <div className="alert alert-danger">{message}</div>}
         <div>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">姓名</label>
           <input
             onChange={handleChangeUsername}
             type="text"
@@ -52,7 +50,7 @@ const RegisterComponent = () => {
         </div>
         <br />
         <div className="form-group">
-          <label htmlFor="email">email</label>
+          <label htmlFor="email">電子郵件</label>
           <input
             onChange={handleChangeEmail}
             type="text"
@@ -62,7 +60,7 @@ const RegisterComponent = () => {
         </div>
         <br />
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">密碼</label>
           <input
             onChange={handleChangePassword}
             type="password"
@@ -72,17 +70,22 @@ const RegisterComponent = () => {
         </div>
         <br />
         <div className="form-group">
-          <label htmlFor="password">role</label>
-          <input
+          <label htmlFor="role">身份</label>
+          <select
             onChange={handleChangeRole}
-            type="text"
             className="form-control"
             name="role"
-          />
+          >
+            <option value="" disabled selected>
+              請選擇一個身份
+            </option>
+            <option value="instructor">教師</option>
+            <option value="student">學生</option>
+          </select>
         </div>
         <br />
         <button onClick={handleRegister} className="btn btn-primary">
-          <span>Register</span>
+          <span>註冊</span>
         </button>
       </div>
     </div>

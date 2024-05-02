@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import AuthService from "../services/auth.service";
 
 const LoginComponent = (props) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 新增
   let { currentUser, setCurrentUser } = props;
   const history = useHistory();
   let [email, setEmail] = useState("");
@@ -20,6 +21,7 @@ const LoginComponent = (props) => {
         console.log(response.data);
         if (response.data.token) {
           localStorage.setItem("user", JSON.stringify(response.data));
+          setIsLoggedIn(true);
         }
         window.alert("登入成功,您現在將導入個人資料介面");
         setCurrentUser(AuthService.getCurrentUser());
